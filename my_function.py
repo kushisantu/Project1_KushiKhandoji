@@ -17,12 +17,15 @@ n_values = [10**10, 10**20, 10**30, 10**40, 10**50, 10**60, 10**70, 10**80, 10**
 
 experimental_times = []
 for n in n_values:
-    time_taken = 0
     start_time = time.perf_counter_ns()
     my_function(n)
     end_time = time.perf_counter_ns()
     time_taken = end_time - start_time
     experimental_times.append(time_taken)
+
+# printing time taken against each n value
+for n, t in zip(n_values, experimental_times):
+    print(f"n = {n}, Time taken = {t:.2f} ns")
 
 # raw theoretical values
 theoretical_raw = [(math.log2(math.log2(n)))**2 for n in n_values]
